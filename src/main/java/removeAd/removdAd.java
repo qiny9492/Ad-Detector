@@ -10,8 +10,11 @@ import shot.Shot;
 
 import javax.sound.sampled.*;
 import javax.sound.sampled.spi.AudioFileWriter;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
 public class removdAd {
     private static boolean ifDetectLogo = false;
@@ -20,6 +23,16 @@ public class removdAd {
     private static Queue<AudioInputStream> audioQueue = new LinkedList<>();
     private static Queue<InputStream> videoQueue = new LinkedList<>();
 
+    private static  int WIDTH = 480;
+    private static int HEIGHT = 270;
+
+    private static boolean ifAddBox = false;
+    private static int boxFrames = 0;
+
+    private static int upperX;
+    private static int upperY;
+    private static int boxWidth;
+    private static int boxHeight;
 
 
     public static void main(String[] args) {
@@ -35,18 +48,18 @@ public class removdAd {
 
         Queue<Shot> adShots = null;
 
-//        try {
-//            adShots = DetectAd.detect(args[0], args[1]);
-//
-//            long endTime1=System.currentTimeMillis();
-//            System.out.println("endTime1 "+ (endTime1-startTime)*1.0/1000);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        try {
+            adShots = DetectAd.detect(args[0], args[1]);
 
-        adShots = new LinkedList<>();
-        adShots.offer(new Shot(2400, 2850, 10));
-        adShots.offer(new Shot(5550, 6000, 10));
+            long endTime1=System.currentTimeMillis();
+            System.out.println("endTime1 "+ (endTime1-startTime)*1.0/1000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        adShots = new LinkedList<>();
+//        adShots.offer(new Shot(2400, 2850, 10));
+//        adShots.offer(new Shot(5550, 6000, 10));
 
         if( args[2].equals( "1" ) ) {
 //            1 remove ad
@@ -93,7 +106,7 @@ public class removdAd {
 
             long readSize = 0;
             long audioSizwWithoutAd = 0;
-
+            long addAudioAdSize = 0;
 
             int idx = 0;
 
@@ -101,6 +114,7 @@ public class removdAd {
                 int start = shot.getStart();
                 int end = shot.getEnd();
 
+                // write audio before shot
                 long length = (long)((start * frameTosample));
                 File outputFile = new File(idx+".wav");
 
@@ -111,15 +125,25 @@ public class removdAd {
 
 //                System.out.println(shot.getStart()+"    "+audioInputStream.available()+"  jjo");
                 AudioSystem.write(audioStream, AudioFileFormat.Type.WAVE, outputFile);
-                audioInputStream.skip((long)((end - start) * frameTosample * 2));
+
+                // skip ad
+
+                long m = audioInputStream.skip((long)((end - start) * frameTosample * 2));
+                readSize += (m/2);
+//                System.out.println("m   "+m);
+
                 audioSegmentFiles.add(outputFile);
+
                 idx++;
 
                 if( ifDetectLogo && !audioQueue.isEmpty() ) {
+                    // add ad audio to original audio position
                     AudioInputStream addedAd = audioQueue.poll();
 
                     outputFile = new File(idx+".wav");
                     AudioSystem.write(addedAd, AudioFileFormat.Type.WAVE, outputFile);
+
+                    audioSizwWithoutAd += addedAd.getFrameLength();
 
                     audioSegmentFiles.add(outputFile);
                     idx++;
@@ -132,7 +156,6 @@ public class removdAd {
             File outputFile = new File(idx+".wav");
             AudioInputStream audioStream = new AudioInputStream(audioInputStream, audioInputStream.getFormat(), AudioSize - readSize);
             audioSizwWithoutAd += AudioSize - readSize;
-//            readSize += AudioSize - readSize;
 
 
             AudioSystem.write(audioStream, AudioFileFormat.Type.WAVE, outputFile);
@@ -168,8 +191,6 @@ public class removdAd {
             File outFile = new File("./removedVideo.rgb");
             OutputStream out = new FileOutputStream(outFile);
 
-            int WIDTH = 480;
-            int HEIGHT = 270;
 
             long len = WIDTH*HEIGHT*3;
             byte[] bytes = new byte[(int)len];
@@ -194,11 +215,42 @@ public class removdAd {
 
                         frameCount += frames;
                     } else {
-                        while (offset < bytes.length && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
-                            offset += numRead;
+                        if( ifDetectLogo && !marked.isEmpty() && frameCount == marked.peek().getIndex() ) {
+                            MarkedImage markedImage = marked.poll();
+
+                            while (offset < bytes.length && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+                                offset += numRead;
+                            }
+
+                            BufferedImage img = bytesToImage(bytes);
+                            upperX = markedImage.getUpperX();
+                            upperY = markedImage.getUpperY();
+                            boxWidth = markedImage.getBoxWidth();
+                            boxHeight = markedImage.getBoxHeight();
+
+                            boxFrames = 10;
+                            ifAddBox = true;
+
+                            DrawBoundingBox(img, upperX, upperY, boxWidth, boxHeight);
+                            out.write(BufferedImageToBytes(img));
+
+                        } else {
+                            while (offset < bytes.length && (numRead=is.read(bytes, offset, bytes.length-offset)) >= 0) {
+                                offset += numRead;
+                            }
+
+                            if( ifDetectLogo && ifAddBox ) {
+                                BufferedImage img = bytesToImage(bytes);
+                                DrawBoundingBox(img, upperX, upperY, boxWidth, boxHeight);
+                                out.write(BufferedImageToBytes(img));
+                                boxFrames--;
+
+                                if( boxFrames == 0 ) ifAddBox = false;
+                            } else {
+                                out.write(bytes,0,  offset);
+                            }
                         }
 
-                        out.write(bytes,0,  offset);
                         frameCount++;
                     }
                 }
@@ -226,6 +278,7 @@ public class removdAd {
 //    TODO: delete
 
     public static void add(int numRead, InputStream inputStream, byte[] bytes, OutputStream out) throws IOException {
+
         while ( (numRead = inputStream.read(bytes)) >= 0 ) {
             out.write(bytes,0,  numRead);
         }
@@ -274,4 +327,57 @@ public class removdAd {
         }
         return null;
     }
+
+
+    public static byte[] BufferedImageToBytes(BufferedImage image) {
+
+        byte[] imageBytes = new byte[image.getWidth() * image.getHeight() * 3];
+
+        int idx = 0;
+        for( int j = 0; j < image.getHeight(); j++ ) {
+            for( int i = 0; i < image.getWidth(); i++ ) {
+                int pixel = image.getRGB(i, j);
+
+
+                byte r = Integer.valueOf(((pixel >> 16) & 0xff)).byteValue();
+                byte g = Integer.valueOf((pixel >> 8) & 0xff).byteValue();
+                byte b = Integer.valueOf((pixel) & 0xff).byteValue();
+
+                int step = image.getHeight() * image.getWidth();
+                imageBytes[idx] = r;
+                imageBytes[idx + step] = g;
+                imageBytes[idx + step * 2] = b;
+                idx++;
+            }
+        }
+        return imageBytes;
+    }
+
+    public static void DrawBoundingBox(BufferedImage img,int x, int y, int width, int height) {
+        Graphics g = img.getGraphics();
+        g.setColor(Color.RED);
+        g.drawRect(x, y, width, height);// upper-left x, y, width, height
+
+    }
+
+
+    public static BufferedImage bytesToImage(byte[] bytes) {
+        int ind = 0;
+
+        BufferedImage img = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+        for(int y = 0; y < HEIGHT; y++){
+            for(int x = 0; x < WIDTH; x++){
+                byte r = bytes[ind];
+                byte g = bytes[ind+HEIGHT*WIDTH];
+                byte b = bytes[ind+HEIGHT*WIDTH*2];
+
+                int pix = 0xff000000 | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
+                img.setRGB(x,y,pix);
+                ind++;
+            }
+        }
+        return img;
+    }
+
 }

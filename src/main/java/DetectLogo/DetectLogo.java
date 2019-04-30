@@ -211,7 +211,7 @@ public class DetectLogo {
 
             //display(img);
             if (detected) {
-                MarkedImage mk = new MarkedImage(idx,img, upperX, upperY, bbWidth, bbHeight);
+                MarkedImage mk = new MarkedImage(idx, upperX, upperY, bbWidth, bbHeight);
                 this.marked.offer(mk);
             }
 
