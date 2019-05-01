@@ -3,12 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b2c315e3-1667-4e4d-804c-b3b004b4feab" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DetectLogo/MarkedImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DetectLogo/MarkedImage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/removeAd/removdAd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/removeAd/removdAd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DetectLogo/DetectLogo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DetectLogo/DetectLogo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/DetectLogo/MarkedImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DetectLogo/MarkedImage.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/removeAd/removdAd.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/removeAd/removdAd.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,10 +23,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/DetectAd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="245" selection-start-line="245" selection-end-line="245" />
+            <state relative-caret-position="168">
+              <caret line="188" selection-start-line="188" selection-end-line="188" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -37,64 +35,55 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/DetectLogo/MarkedImage.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="20" selection-start-line="16" selection-start-column="3" selection-end-line="20" />
+            <state relative-caret-position="-1206">
+              <caret line="194" selection-start-line="194" selection-end-line="194" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1950#1951#0" expanded="true" />
-                <element signature="e#1984#1985#0" expanded="true" />
-                <element signature="e#2014#2015#0" expanded="true" />
-                <element signature="e#2048#2049#0" expanded="true" />
-                <element signature="e#2080#2081#0" expanded="true" />
-                <element signature="e#2116#2117#0" expanded="true" />
-                <element signature="e#2149#2150#0" expanded="true" />
-                <element signature="e#2186#2187#0" expanded="true" />
-                <element signature="e#2223#2224#0" expanded="true" />
-                <element signature="e#2254#2255#0" expanded="true" />
-                <element signature="e#2290#2291#0" expanded="true" />
-                <element signature="e#2321#2322#0" expanded="true" />
-                <element signature="e#2359#2360#0" expanded="true" />
-                <element signature="e#2392#2393#0" expanded="true" />
-                <element signature="e#2432#2433#0" expanded="true" />
-                <element signature="e#2466#2467#0" expanded="true" />
+                <element signature="method#detectLogos#0;class#DetectLogo#0" />
+                <element signature="method#MappingName#0;class#DetectLogo#0" />
+                <element signature="method#rgbToBmp#0;class#DetectLogo#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Math/MathCal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/removeAd/removdAd.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="205" selection-start-line="205" selection-end-line="205" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="168">
+              <caret line="104" selection-start-line="104" selection-end-line="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/removeAd/removdAd.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/shot/Shot.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-                <element signature="e#348#349#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1007">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
+            <state relative-caret-position="243">
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -110,13 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ImageAnnotatorClient</find>
-      <find>bytes</find>
-      <find>EXTERNAL_BUFFER_SIZE</find>
-      <find>audioBuffer</find>
-      <find>read</find>
-      <find>readBytes</find>
-      <find>sampleRatePerFrame</find>
       <find>han</find>
       <find>outputStream</find>
       <find>audioByetesRead</find>
@@ -140,6 +122,13 @@
       <find>WIDTH</find>
       <find>img</find>
       <find>DrawBoundingBox</find>
+      <find>args</find>
+      <find>remo</find>
+      <find>Shot</find>
+      <find>detect</find>
+      <find>isAd</find>
+      <find>System.out.printl</find>
+      <find>System</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -154,8 +143,11 @@
         <option value="$PROJECT_DIR$/src/main/java/readFiles/imageReader.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/DetectLogo/DriverTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java" />
         <option value="$PROJECT_DIR$/src/main/java/DetectLogo/MarkedImage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AnalyzeAd/DetectAd.java" />
+        <option value="$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java" />
         <option value="$PROJECT_DIR$/src/main/java/removeAd/removdAd.java" />
       </list>
     </option>
@@ -168,10 +160,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="628" />
-    <option name="y" value="23" />
-    <option name="width" value="953" />
-    <option name="height" value="793" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -179,7 +169,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -190,6 +180,11 @@
             <path>
               <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
               <item name="576final" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
+              <item name="576final" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,52 +197,19 @@
               <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
               <item name="576final" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
-              <item name="576final" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="DetectLogo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
-              <item name="576final" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="readFiles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
-              <item name="576final" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="removeAd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="finalProjectFor576" type="b2602c69:ProjectViewProjectNode" />
-              <item name="576final" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="shot" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556634318629" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556682924175" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -306,7 +268,7 @@
       </envs>
       <option name="MAIN_CLASS_NAME" value="removeAd.removdAd" />
       <module name="576final" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../Downloads/dataset2/Videos/data_test2.rgb $PROJECT_DIR$/../Downloads/dataset2/Videos/data_test2.wav 1 $PROJECT_DIR$/../Downloads/dataset2/BrandImages/ $PROJECT_DIR$/../Downloads/dataset2/Ads/" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../Downloads/dataset/Videos/data_test1.rgb $PROJECT_DIR$/../Downloads/dataset/Videos/data_test1.wav ./output/resultAddAd1.rgb ./output/resultAddAd1.wav 1 $PROJECT_DIR$/../Downloads/dataset/BrandImages/ $PROJECT_DIR$/../Downloads/dataset/Ads/" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="removeAd.*" />
@@ -333,7 +295,7 @@
     <configuration name="videoPlayback" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="readFiles.videoPlayback" />
       <module name="576final" />
-      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/removedVideo.rgb $PROJECT_DIR$/removedVideo.wav" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/output/resultAddAd2.rgb $PROJECT_DIR$/output/resultAddAd2.wav" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="readFiles.*" />
@@ -373,17 +335,18 @@
       <workItem from="1556566601346" duration="445000" />
       <workItem from="1556567054626" duration="751000" />
       <workItem from="1556567966407" duration="13200000" />
-      <workItem from="1556582548041" duration="21369000" />
+      <workItem from="1556582548041" duration="26907000" />
+      <workItem from="1556673021412" duration="6164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51061000" />
+    <option name="totallyTimeSpent" value="62763000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" x="1041" y="490" width="373" height="602" id="Project" order="0" sideWeight="0.4990758" visible="true" weight="0.17167382" />
+      <window_info active="true" content_ui="combo" x="1041" y="490" width="373" height="602" id="Project" order="0" sideWeight="0.4990758" visible="true" weight="0.23032904" />
       <window_info id="Structure" order="1" sideWeight="0.5009242" side_tool="true" weight="0.23319027" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -392,8 +355,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5009242" side_tool="true" weight="0.23319027" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.3583691" visible="true" weight="0.44237918" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.43611112" weight="0.28624535" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.3583691" visible="true" weight="0.3135068" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.43611112" weight="0.41016108" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -471,27 +434,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/DetectAd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5879">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundAmplitude.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -605,30 +551,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Math/MathCal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="245" selection-start-line="245" selection-end-line="245" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/DetectLogo/DetectLogo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1007">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="-1206">
+          <caret line="194" selection-start-line="194" selection-end-line="194" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#detectLogos#0;class#DetectLogo#0" />
+            <element signature="method#MappingName#0;class#DetectLogo#0" />
+            <element signature="method#rgbToBmp#0;class#DetectLogo#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/removeAd/removdAd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        <state relative-caret-position="121">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/DetectAd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/SoundCharacter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="104" selection-start-line="104" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/AnalyzeAd/VoteShots.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
         </state>
       </provider>
     </entry>

@@ -186,9 +186,10 @@ public class DetectLogo {
                     if (logoContent.contains(logoText.get(n))) {
                         detected = true;
 
-                        if( !nonRepetLogo.contains(logoText.get(n)) ) {
-                            nonRepetLogo.add(logoText.get(n));
-                            logos.add(logoText.get(n));
+                        String abbr = MappingName(logoText.get(n));
+                        if( !nonRepetLogo.contains(abbr) ) {
+                            nonRepetLogo.add(abbr);
+                            logos.add(abbr);
                         }
 
 
@@ -246,9 +247,9 @@ public class DetectLogo {
                 ByteString imgBytes = ByteString.readFrom(new FileInputStream(folderPath + file.getName()));
                 ArrayList<EntityAnnotation> logoList = detectLogos(imgBytes);
                 logoDescription = logoList.get(0).getDescription();
-                if(logoDescription.contains(" ")){
-                    logoDescription= logoDescription.substring(0, logoDescription.indexOf(" "));
-                }
+//                if(logoDescription.contains(" ")){
+//                    logoDescription= logoDescription.substring(0, logoDescription.indexOf(" "));
+//                }
                 logoText.add(logoDescription);
 
             }
@@ -302,6 +303,81 @@ public class DetectLogo {
         }
 
         return logoInfo;
+    }
+
+    public String MappingName (String logoName) {
+        String fileName = "";
+
+        if (logoName.contains("subway")) {
+            fileName = "subway";
+        }else if (logoName.contains("starbucks")) {
+            fileName = "starbucks";
+        }else if (logoName.contains("mcdonalds")) {
+            fileName = "mcd";
+        }else if (logoName.contains("nfl")) {
+            fileName = "nfl";
+        }else if (logoName.contains("american eagle")) {
+            fileName = "ae";
+        }else if (logoName.contains("hard rock cafe")) {
+            fileName = "hrc";
+        }
+        return fileName;
+    }
+
+
+
+
+
+
+
+
+    public byte[] rgbToBmp(String filePath) throws Exception {
+
+        byte[] rgbBytes = new byte[WIDTH*HEIGHT*3];
+
+        File file = new File(filePath);
+
+        RandomAccessFile raf = new RandomAccessFile(file, "r");
+
+        BufferedImage rgbImg = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+
+        raf.seek(0);
+
+        raf.read(rgbBytes);
+
+        int ind = 0;
+
+
+        for(int y = 0; y < HEIGHT; y++)
+        {
+            for(int x = 0; x < WIDTH; x++)
+            {
+                byte a = 0;
+                byte r = rgbBytes[ind];
+                byte g = rgbBytes[ind+HEIGHT*WIDTH];
+                byte b = rgbBytes[ind+HEIGHT*WIDTH*2];
+
+
+                int pix = 0xff000000 | ((r & 0xff) << 16) | ((g & 0xff) << 8) | (b & 0xff);
+
+
+                //int pix = ((a << 24) + (r << 16) + (g << 8) + b)
+                rgbImg.setRGB(x,y,pix);
+                ind++;
+            }
+        }
+
+
+        ByteArrayOutputStream bbaos = new ByteArrayOutputStream();
+        ImageIO.write( rgbImg, "bmp", bbaos );
+
+        bbaos.flush();
+
+        byte[] bmpBytes = bbaos.toByteArray();
+        bbaos.close();
+        return bmpBytes;
+
+
     }
 
 //    public void display(BufferedImage img) {

@@ -57,14 +57,18 @@ public class VoteShots {
                 count++;
             }
 
+//            System.out.println("length  " + (end - count) + (i-1));
 
             if( entropy < 6 ) {
                 count++;
             }
 
-            if( soundCharacter.isAd(start, end) ) {
+//            System.out.println("move vector entropy  " + (entropy)+"    "+(i-1));
+
+            if( soundCharacter.isAd(start, end, (i-1)) ) {
                 count++;
             }
+
 
             double time = (end - start)/30;
             Shot shot = new Shot(start, end, time);
@@ -112,10 +116,15 @@ public class VoteShots {
         Shot shot = adShots.get(0);
         int start = shot.getStart();
         int end = shot.getEnd();
+
+//        System.out.println("shot  start   "+start +" end "+end);
+
         double time = shot.getTime();
 
         for( int i = 1; i < adShots.size(); i++ ) {
             shot = adShots.get(i);
+
+//            System.out.println("shot  start   "+shot.getStart() +" end "+shot.getEnd());
 
             if( end == shot.getStart() ) {
                 end = shot.getEnd();
@@ -127,6 +136,7 @@ public class VoteShots {
             }
         }
         queue.offer(new Shot(start, end, time));
+//        System.out.println("queue size  " + queue.size());
 
 //        for( Shot shot1 : queue )
 //            System.out.println(shot1.getStart()+"   "+shot1.getEnd());

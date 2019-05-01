@@ -28,9 +28,10 @@ public class SoundCharacter {
     }
 
 
-    public boolean isAd(int start, int end) {
+    public boolean isAd(int start, int end, int idx) {
         end = Math.min(audioFrames.size(), end);
         double entropy = mathCal.getEntropy(audioFrames, start, end);
+
 //        System.out.println("sound entropy   "+entropy+"     indx  "+idx);
 
         if( entropy > 7 ) {

@@ -34,6 +34,9 @@ public class removdAd {
     private static int boxWidth;
     private static int boxHeight;
 
+    private static String rgbOutput;
+    private static String wavOutput;
+
 
     public static void main(String[] args) {
 //        /Users/yangtian/Downloads/dataset/Videos/data_test1.rgb /Users/yangtian/Downloads/dataset/Videos/data_test1.wav
@@ -46,13 +49,16 @@ public class removdAd {
         String vfilename = args[0];
         String afilename = args[1];
 
+        rgbOutput = args[2];
+        wavOutput = args[3];
+
         Queue<Shot> adShots = null;
 
         try {
             adShots = DetectAd.detect(args[0], args[1]);
 
-            long endTime1=System.currentTimeMillis();
-            System.out.println("endTime1 "+ (endTime1-startTime)*1.0/1000);
+//            long endTime1=System.currentTimeMillis();
+//            System.out.println("endTime1 "+ (endTime1-startTime)*1.0/1000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -61,22 +67,22 @@ public class removdAd {
 //        adShots.offer(new Shot(2400, 2850, 10));
 //        adShots.offer(new Shot(5550, 6000, 10));
 
-        if( args[2].equals( "1" ) ) {
+        if( args[4].equals( "1" ) ) {
 //            1 remove ad
-            DetectLogo detect = new DetectLogo(args[3],vfilename, new LinkedList<Shot>(adShots));//args[3] logo path
+            DetectLogo detect = new DetectLogo(args[5],vfilename, new LinkedList<Shot>(adShots));//args[3] logo path
             ifDetectLogo = true;
             try {
                 detect.Detecting();
                 marked = detect.getIndexAndImage();
 
                 Queue<String> logoList = detect.getLogos();
-                long endTime2=System.currentTimeMillis();
-                System.out.println("endTime2 "+ (endTime2-startTime)*1.0/1000);
+//                long endTime2=System.currentTimeMillis();
+//                System.out.println("endTime2 "+ (endTime2-startTime)*1.0/1000);
 
-                getAddedAd(logoList,args[4]);//ad Path
+                getAddedAd(logoList,args[6]);//ad Path
 
-                long endTime3=System.currentTimeMillis();
-                System.out.println("endTime3 "+ (endTime3-startTime)*1.0/1000);
+//                long endTime3=System.currentTimeMillis();
+//                System.out.println("endTime3 "+ (endTime3-startTime)*1.0/1000);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -86,8 +92,8 @@ public class removdAd {
 
         writeAudio(afilename, adShots);
 
-        long endTime4=System.currentTimeMillis();
-        System.out.println("endTime4 "+ (endTime4-startTime)*1.0/1000);
+//        long endTime4=System.currentTimeMillis();
+//        System.out.println("endTime4 "+ (endTime4-startTime)*1.0/1000);
 
         writeVideo(vfilename,adShots);
 
@@ -169,7 +175,7 @@ public class removdAd {
             Enumeration<AudioInputStream> audioInputStreamEnumeration = outStreams.elements();
             SequenceInputStream sequenceInputStream = new SequenceInputStream(audioInputStreamEnumeration);
 
-            File combineFile = new File("removedVideo.wav");
+            File combineFile = new File(wavOutput);
 //            System.out.println(audioSizwWithoutAd);
             AudioInputStream combinedStream = new AudioInputStream(sequenceInputStream, audioInputStream.getFormat(), audioSizwWithoutAd);
             AudioSystem.write(combinedStream, AudioFileFormat.Type.WAVE, combineFile);
@@ -188,7 +194,7 @@ public class removdAd {
 //            System.out.println(vfilename);
             InputStream is = new FileInputStream(file);
 
-            File outFile = new File("./removedVideo.rgb");
+            File outFile = new File(rgbOutput);
             OutputStream out = new FileOutputStream(outFile);
 
 
@@ -196,7 +202,7 @@ public class removdAd {
             byte[] bytes = new byte[(int)len];
 
             for( Shot shot : adShots ) {
-                System.out.println(shot.getStart()+" "+frameCount);
+//                System.out.println(shot.getStart()+" "+frameCount);
 
                 while ( frameCount <= shot.getStart() ) {
 
